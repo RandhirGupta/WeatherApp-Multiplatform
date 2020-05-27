@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.cyborg.weatherapp_multiplatform.R
 import com.cyborg.weatherapp_multiplatform.common.domain.model.ForecastList
+import com.cyborg.weatherapp_multiplatform.common.utils.convertToDegreeCelsius
 import com.cyborg.weatherapp_multiplatform.common.utils.getDayName
 import com.cyborg.weatherapp_multiplatform.databinding.WeatherForecastItemLayoutBinding
 
@@ -28,7 +29,14 @@ class WeatherForecastAdapter(private var forecastList: List<ForecastList>?) :
         val forecast = forecastList?.get(p1)
         p0.binding.tvForecastDay.text = forecast?.dt?.let { getDayName(it) }
         p0.binding.tvForecastTemp.text =
-            String.format("%s %s", forecast?.temp?.max.toString(), "\u2103")
+            String.format(
+                "%s %s",
+                String.format(
+                    "%.2f",
+                    forecast?.temp?.max?.let { convertToDegreeCelsius(it) }
+                ),
+                "\u2103"
+            )
 
         setAnimation(p0.itemView, p1)
     }

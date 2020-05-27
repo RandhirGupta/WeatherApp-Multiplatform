@@ -12,3 +12,5 @@ fun getDayName(inputDate: Long): String {
     val outFormat = DateFormat("EEEE")
     return outFormat.format(date)
 }
+
+fun convertToDegreeCelsius(tempK: Double): Double = tempK - 273.15

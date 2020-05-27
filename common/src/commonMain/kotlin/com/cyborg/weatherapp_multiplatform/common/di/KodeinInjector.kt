@@ -6,6 +6,7 @@ import com.cyborg.weatherapp_multiplatform.common.data.source.network.NetworkDat
 import com.cyborg.weatherapp_multiplatform.common.data.source.network.NetworkDataSourceImpl
 import com.cyborg.weatherapp_multiplatform.common.data.source.network.WeatherApi
 import com.cyborg.weatherapp_multiplatform.common.domain.usecase.getWeatherData.GetCurrentWeatherUseCase
+import com.cyborg.weatherapp_multiplatform.common.domain.usecase.getWeatherData.GetWeatherForecastUseCase
 import kotlinx.serialization.UnstableDefault
 import org.kodein.di.Kodein
 import org.kodein.di.erased.bind
@@ -25,6 +26,7 @@ val KodeinInjector = Kodein {
      * UseCases
      */
     bind<GetCurrentWeatherUseCase>() with singleton { GetCurrentWeatherUseCase(instance()) }
+    bind<GetWeatherForecastUseCase>() with singleton { GetWeatherForecastUseCase(instance()) }
 
     /**
      * Repositories

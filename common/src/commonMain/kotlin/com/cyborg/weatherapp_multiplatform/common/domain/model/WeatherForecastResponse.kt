@@ -47,7 +47,7 @@ data class ForecastList(
     val feels_like: FeelsLike,
     val humidity: Int,
     val pressure: Int,
-    val rain: Double,
+    val rain: Double = 0.0,
     val speed: Double,
     val sunrise: Int,
     val sunset: Int,

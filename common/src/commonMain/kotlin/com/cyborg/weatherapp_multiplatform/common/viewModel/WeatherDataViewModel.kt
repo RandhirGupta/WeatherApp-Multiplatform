@@ -19,8 +19,8 @@ import kotlin.coroutines.CoroutineContext
 
 class WeatherDataViewModel : ViewModel() {
 
-//    var getCurrentWeatherLiveData =
-//        MutableLiveData<WeatherApiState<CurrentWeatherResponse>>(LoadingWeatherApiState())
+    var getCurrentWeatherLiveData =
+        MutableLiveData<WeatherApiState<CurrentWeatherResponse>>(LoadingWeatherApiState())
 
     var getWeatherForecastLiveData =
         MutableLiveData<WeatherApiState<WeatherForecastResponse>>(LoadingWeatherApiState())
@@ -38,24 +38,24 @@ class WeatherDataViewModel : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, _ -> }
 
-//    @UnstableDefault
-//    fun getCurrentWeather(url: String) =
-//        launchSilent(coroutineContext, exceptionHandler, job) {
-//            getCurrentWeatherLiveData.postValue(LoadingWeatherApiState())
-//
-//            val request = GetCurrentWeatherRequest(url)
-//            val response = getCurrentWeatherUseCase.execute(request)
-//            processCurrentWeatherResponse(response)
-//        }
-//
-//    private fun processCurrentWeatherResponse(response: Response<CurrentWeatherResponse>) {
-//
-//        if (response is Response.Success) {
-//            getCurrentWeatherLiveData.postValue(SuccessWeatherApiState(response))
-//        } else if (response is Response.Error) {
-//            getCurrentWeatherLiveData.postValue(ErrorWeatherApiState(response))
-//        }
-//    }
+    @UnstableDefault
+    fun getCurrentWeather(url: String) =
+        launchSilent(coroutineContext, exceptionHandler, job) {
+            getCurrentWeatherLiveData.postValue(LoadingWeatherApiState())
+
+            val request = GetCurrentWeatherRequest(url)
+            val response = getCurrentWeatherUseCase.execute(request)
+            processCurrentWeatherResponse(response)
+        }
+
+    private fun processCurrentWeatherResponse(response: Response<CurrentWeatherResponse>) {
+
+        if (response is Response.Success) {
+            getCurrentWeatherLiveData.postValue(SuccessWeatherApiState(response))
+        } else if (response is Response.Error) {
+            getCurrentWeatherLiveData.postValue(ErrorWeatherApiState(response))
+        }
+    }
 
     @UnstableDefault
     fun getWeatherForecast(url: String) = launchSilent(coroutineContext, exceptionHandler, job) {

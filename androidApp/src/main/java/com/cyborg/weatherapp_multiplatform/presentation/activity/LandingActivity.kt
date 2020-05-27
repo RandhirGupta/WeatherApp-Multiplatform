@@ -11,6 +11,7 @@ import com.cyborg.weatherapp_multiplatform.R
 import com.cyborg.weatherapp_multiplatform.common.base.Response
 import com.cyborg.weatherapp_multiplatform.common.domain.model.CurrentWeatherResponse
 import com.cyborg.weatherapp_multiplatform.common.domain.model.WeatherForecastResponse
+import com.cyborg.weatherapp_multiplatform.common.utils.convertToDegreeCelsius
 import com.cyborg.weatherapp_multiplatform.common.viewModel.*
 import com.cyborg.weatherapp_multiplatform.databinding.ActivityLandingBinding
 import com.cyborg.weatherapp_multiplatform.presentation.adapter.WeatherForecastAdapter
@@ -36,12 +37,12 @@ class LandingActivity : AppCompatActivity() {
         weatherDataViewModel =
             ViewModelProviders.of(this).get(WeatherDataViewModel::class.java)
 
-//        weatherDataViewModel.getCurrentWeather("https://api.openweathermap.org/data/2.5/weather?lat=12.9129744&lon=77.6421572&appid=56233468d738f55639fa78ac26a56e2c")
-//        weatherDataViewModel.getCurrentWeatherLiveData.addObserver {
-//            currentWeatherStateMachine(it)
-//        }
+        weatherDataViewModel.getCurrentWeather("https://api.openweathermap.org/data/2.5/weather?lat=12.9129744&lon=77.6421572&appid=56233468d738f55639fa78ac26a56e2c")
+        weatherDataViewModel.getCurrentWeatherLiveData.addObserver {
+            currentWeatherStateMachine(it)
+        }
 
-        weatherDataViewModel.getWeatherForecast("https://api.openweathermap.org/data/2.5/forecast/daily?id=560102&appid=56233468d738f55639fa78ac26a56e2c")
+        weatherDataViewModel.getWeatherForecast("https://api.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=56233468d738f55639fa78ac26a56e2c")
         weatherDataViewModel.getWeatherForecastLiveData.addObserver {
             weatherForecastStateMachine(it)
         }
@@ -98,7 +99,10 @@ class LandingActivity : AppCompatActivity() {
         binding.forecastTempTextView.text =
             String.format(
                 "%s %s",
-                weatherForecastResponse.list[0].temp.max.toString(),
+                String.format(
+                    "%.2f",
+                    convertToDegreeCelsius(weatherForecastResponse.list[0].temp.max)
+                ),
                 "\u2103"
             )
         binding.successLayout.visibility = View.VISIBLE
