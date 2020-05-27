@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,12 +87,12 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/loading_view"
+            android:id="@+id/loadingView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:animateLayoutChanges="true"
-            android:visibility="gone"
+            android:visibility="visible"
             android:background="@color/background_color">
 
             <ImageButton

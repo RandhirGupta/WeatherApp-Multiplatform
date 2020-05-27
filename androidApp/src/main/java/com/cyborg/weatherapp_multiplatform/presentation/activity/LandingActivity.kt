@@ -58,12 +58,10 @@ class LandingActivity : AppCompatActivity() {
             }
 
             is LoadingWeatherApiState -> {
-                binding.errorLayout.visibility = View.VISIBLE
                 Log.d("Current weather", "Loading current weather")
             }
 
             is ErrorWeatherApiState -> {
-                binding.errorLayout.visibility = View.GONE
                 val response = state.response as Response.Error
                 Log.d("Current weather", response.exception.toString())
             }
@@ -81,11 +79,12 @@ class LandingActivity : AppCompatActivity() {
             }
 
             is LoadingWeatherApiState -> {
-                binding.errorLayout.visibility = View.VISIBLE
+                binding.loadingView.visibility = View.VISIBLE
                 Log.d("Forecast weather", "Loading current weather")
             }
 
             is ErrorWeatherApiState -> {
+                binding.loadingView.visibility = View.GONE
                 binding.errorLayout.visibility = View.GONE
                 val response = state.response as Response.Error
                 Log.d("Forecast weather", response.exception.toString())
@@ -105,6 +104,8 @@ class LandingActivity : AppCompatActivity() {
                 ),
                 "\u2103"
             )
+
+        binding.loadingView.visibility = View.GONE
         binding.successLayout.visibility = View.VISIBLE
         binding.errorLayout.visibility = View.GONE
 
@@ -116,6 +117,6 @@ class LandingActivity : AppCompatActivity() {
 
     private fun startRotatingImage() {
         val startRotateAnimation = AnimationUtils.loadAnimation(this, R.anim.linear_interpolator)
-        binding.loadingViewPb.startAnimation(startRotateAnimation)
+        binding.loadingView.startAnimation(startRotateAnimation)
     }
 }
