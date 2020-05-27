@@ -42,7 +42,7 @@ class LandingActivity : AppCompatActivity() {
             currentWeatherStateMachine(it)
         }
 
-        weatherDataViewModel.getWeatherForecast("https://api.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=56233468d738f55639fa78ac26a56e2c")
+        weatherDataViewModel.getWeatherForecast("https://api.openweathermap.org/data/2.5/forecast/daily?q=bengaluru&appid=56233468d738f55639fa78ac26a56e2c")
         weatherDataViewModel.getWeatherForecastLiveData.addObserver {
             weatherForecastStateMachine(it)
         }
