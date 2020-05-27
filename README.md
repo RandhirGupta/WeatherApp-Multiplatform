@@ -9,4 +9,4 @@ An Android and iOS application using Kotlin Multiplatform. The project uses MVVM
 - <a href="https://github.com/icerockdev/moko-mvvm" target="_blank">`moko-mvvm`</a> : Model-View-ViewModel architecture components
 - <a href="https://github.com/korlibs/klock" target="_blank">`Klock`</a>: Multiplatform Date and time library
 
-[!(https://github.com/RandhirGupta/WeatherApp-Multiplatform/blob/master/assets/android.png)]
+![Android](https://github.com/RandhirGupta/WeatherApp-Multiplatform/blob/master/assets/android.png)
