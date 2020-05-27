@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".ui.activity.LandingActivity">
+
+        <LinearLayout
+            android:id="@+id/successLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_56"
+                android:paddingBottom="@dimen/dp_62">
+
+                <TextView
+                    android:id="@+id/forecastTempTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_96" />
+
+                <TextView
+                    android:id="@+id/forecastLocationTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_36" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/forecastRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@android:color/white"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/weather_forecast_item_layout" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/errorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/error_background_color"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                android:id="@+id/error_message_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/error_message"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_54" />
+
+            <Button
+                android:id="@+id/retry_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_44"
+                android:background="@color/retry_button_color"
+                android:gravity="center"
+                android:padding="@dimen/dp_16"
+                android:text="@string/retry"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:animateLayoutChanges="true"
+            android:visibility="gone"
+            android:background="@color/background_color">
+
+            <ImageButton
+                android:id="@+id/loading_view_pb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_loading"
+                android:indeterminate="true"
+                android:interpolator="@anim/linear_interpolator"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/gpsMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/dp_16"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/gps_setting"
+            android:visibility="visible" />
+
+    </FrameLayout>
+
+</layout>
